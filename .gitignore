@@ -3,6 +3,8 @@
 /node_modules
 .yarn
 .vscode
+.pnp.cjs
+.pnp.loader.mjs
 
 # Logs
 logs
