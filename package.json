@@ -36,6 +36,7 @@
     "webpack": "^5.88.1"
   },
   "devDependencies": {
+    "@hapi/joi": "^17.1.1",
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",

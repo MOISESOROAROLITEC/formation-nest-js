@@ -6,6 +6,8 @@ import { Coffee } from "./entities/coffees.entity";
 import { Flavor } from "./entities/flavor.entity";
 import { COFFEE_BRAND } from "./constantes/coffee-constantes";
 import { Event } from "src/events/entities/event.entity";
+import { ConfigModule, ConfigService } from "@nestjs/config";
+import coffeeConfig from "./config/coffee.config";
 
 @Injectable()
 class CoffeeBrandFactory {
@@ -17,9 +19,13 @@ class CoffeeBrandFactory {
 }
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Coffee, Flavor, Event])],
+  imports: [
+    TypeOrmModule.forFeature([Coffee, Flavor, Event]),
+    ConfigModule.forFeature(coffeeConfig),
+  ],
   controllers: [CoffeesController],
   providers: [
+    ConfigService,
     CoffeesService,
     CoffeeBrandFactory,
     {
