@@ -14,7 +14,6 @@ import { LoggingMiddleware } from "./middlewares/logging/logging.middleware";
 @Module({
   imports: [ConfigModule],
   providers: [
-    { provide: APP_GUARD, useClass: ApiKeyGuard },
     { provide: APP_INTERCEPTOR, useClass: WrapResponseInterceptor },
     { provide: APP_INTERCEPTOR, useClass: TimeoutInterceptor },
   ],
