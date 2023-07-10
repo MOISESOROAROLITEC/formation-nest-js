@@ -15,7 +15,9 @@ import { PaginationQueryDto } from "src/common/dto/pagination-query.dto";
 import { Public } from "src/common/decorators/public.decorators";
 import { ParseIntPipe } from "src/common/pipes/parse-int/parse-int.pipe";
 import { Protocol } from "src/common/decorators/protocole.decorator";
+import { ApiNotFoundResponse, ApiTags } from "@nestjs/swagger";
 
+@ApiTags("coffee")
 @Controller("coffees")
 export class CoffeesController {
   constructor(private readonly coffeeServices: CoffeesService) {}
@@ -26,6 +28,7 @@ export class CoffeesController {
     return this.coffeeServices.findAll(paginationQueryDto);
   }
 
+  @ApiNotFoundResponse({ description: "This coffee is not found" })
   @Public()
   @Get(":id")
   findOne(@Protocol() protocol: string, @Param("id", ParseIntPipe) id: number) {
